@@ -9,38 +9,41 @@
 
     </head>
     <body>
+        {% from "_macro.html" import render_field %}
         <div class="Google_AdSense_down"></div>
         <div>
             <div class="content">
                 <div class="Example_Text">
-                    dlafjdlkjaldlajfldjflaakdfkljalkdjflkasjdlsjalkdjslafld <br>
-                    dafjdlkjalfkdlkfaldjljaflkdjlfajdlkjfaljdljaflkdjlfjald 
+                    {{ texto }} 
                 </div>
                 <div class="Input_Text">
-                    <input type="text">
+                    <form> 
+                        {{ render_field(form.imput, class='_form') }} 
+                    </form>
                 </div>
                 <div>
                     <div class="Stats">
                         <div class="Menu">
-                            Options <br>
-                            Stats 
+                            <a href="" class="menu_item_1"> Log in </a>
+                            <a href="" class="menu_item_2"> Options </a>
+                            <a href="" class="menu_item_3"> Stats </a>
                         </div>
                         <div class="Customable_Stats_1">
                             <h2 class="speed"> Speed: </h2>
-                            <h2 class="speed_number"> 45 WPM </h2>
+                            <h2 class="speed_number"> {{ Speed }} </h2>
 
                             <h2 class="errors"> Errors: </h2>
-                            <h2 class="errors_number"> 10 </h2>
+                            <h2 class="errors_number"> {{ Errors }} </h2>
                         </div>
                         <div class="Customable_Stats_2">
                             <h2 class="Correct_words"> Correct words: </h2>
-                            <h2 class="Correct_words_number"> 34 </h2>
+                            <h2 class="Correct_words_number"> {{ Correct_words }} </h2>
 
                             <h2 class="Wrong_words"> Wrong words: </h2>
-                            <h2 class="Wrong_words_number"> 3 </h2>
+                            <h2 class="Wrong_words_number"> {{ Wrong_words }} </h2>
 
                             <h2 class="Keystrokes"> Keystrokes: </h2>
-                            <h2 class="Keystrokes_numbers"> 232 </h2>
+                            <h2 class="Keystrokes_numbers"> {{ Keystrokes }} </h2>
                         </div>
                     </div>
                 </div>

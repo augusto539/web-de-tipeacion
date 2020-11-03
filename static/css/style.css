@@ -48,9 +48,14 @@ body div{
     grid-template-rows: repeat(3, 1fr);
 }
 
-.Input_Text input{
+.Input_Text form{
     grid-row: 2;
     grid-column: 2;
+}
+
+.Input_Text form ._form{
+    height: 100%;
+    width: 100%;
 
     border-radius: 15px;
     border: none;
@@ -77,6 +82,20 @@ body div{
     grid-gap: 5%;
 }
 
+a{
+    text-decoration: none;
+    text-justify: center;
+    color: #A7A7A7;
+
+    display: inline-block;
+    border-radius: 15px;
+    line-height: 200%;
+    width: 100%;
+}
+a:hover{
+    background-color: #3D3D3D;
+}
+
 .Stats .Menu{
     grid-row: 2;
     grid-column: 2;
@@ -84,7 +103,25 @@ body div{
     background-color: #2D2D2D;
     color: #A7A7A7;
     border-radius: 15px;
+
+    display: grid;
+    grid-template-rows: 55% 22.5% 22.5%;
+
+    font-size: 150%;
+    text-align: center;
 }
+.Menu .menu_item_1{
+    grid-row: 1;
+
+    line-height: 500%;
+}
+.Menu .menu_item_2{
+    grid-row: 2;
+}
+.Menu .menu_item_3{
+    grid-row: 3;
+}
+
 
 .Stats .Customable_Stats_1{
     grid-row: 2;
