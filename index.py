@@ -1,14 +1,18 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 
 from form import Imput
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods = ['GET','POST'])
 def index():
 
-    text_imput = Imput()
+    text_imput = Imput(request.form)
+
+    if request.method == 'POST':
+        print (text_imput.imput.data)
     
     texto = "hola como estas este es un texto de prueva sin puntuaciones"
 

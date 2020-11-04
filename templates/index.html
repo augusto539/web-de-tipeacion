@@ -3,7 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
         <title>Web de tipeacion</title>
 
@@ -14,12 +17,36 @@
         <div>
             <div class="content">
                 <div class="Example_Text">
-                    {{ texto }} 
+                    <div class="Example_Text_1" id="Example_Text_1">
+                        <span class="s1" id="0">hola</span>
+                        <span id="1"></span>
+                        <span id="2"></span>
+                        <span id="3"></span>
+                        <span id="4"></span>
+                        <span id="5"></span>
+                        <span id="6"></span>
+                        <span id="7"></span>
+                        <span id="8"></span>
+                        <span id="9"></span>
+                    </div>
+                    <div class="Example_Text_2" id="Example_Text_2">
+                        <span id="10"></span>
+                        <span id="11"></span>
+                        <span id="12"></span>
+                        <span id="13"></span>
+                        <span id="14"></span>
+                        <span id="15"></span>
+                        <span id="16"></span>
+                        <span id="17"></span>
+                        <span id="18"></span>
+                        <span id="19"></span>
+                    </div>
                 </div>
+
+                <script> escrivir_palabras() </script>
+
                 <div class="Input_Text">
-                    <form> 
-                        {{ render_field(form.imput, class='_form') }} 
-                    </form>
+                    <input type="text1" name="text_1" id="myInput" autocomplete="off" oninput="input()"> 
                 </div>
                 <div>
                     <div class="Stats">
@@ -33,17 +60,17 @@
                             <h2 class="speed_number"> {{ Speed }} </h2>
 
                             <h2 class="errors"> Errors: </h2>
-                            <h2 class="errors_number"> {{ Errors }} </h2>
+                            <h2 class="errors_number" id="errors_number">0</h2>
                         </div>
                         <div class="Customable_Stats_2">
                             <h2 class="Correct_words"> Correct words: </h2>
-                            <h2 class="Correct_words_number"> {{ Correct_words }} </h2>
+                            <h2 class="Correct_words_number" id="Correct_words_number">0</h2>
 
                             <h2 class="Wrong_words"> Wrong words: </h2>
-                            <h2 class="Wrong_words_number"> {{ Wrong_words }} </h2>
+                            <h2 class="Wrong_words_number" id="Wrong_words_number">0</h2>
 
                             <h2 class="Keystrokes"> Keystrokes: </h2>
-                            <h2 class="Keystrokes_numbers"> {{ Keystrokes }} </h2>
+                            <h2 class="Keystrokes_numbers" id="Keystrokes_numbers">0</h2>
                         </div>
                     </div>
                 </div>
