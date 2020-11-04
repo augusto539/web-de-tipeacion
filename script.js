@@ -9,6 +9,7 @@ let numero_errores_palabla = 0;
 let palabras_2 = "";
 let palabras_3 = "";
 let cantidad_de_palabras = 0;
+let cantidad_de_palabras_2 = 0;
 let index;
 
 let string_palabras = "";
@@ -41,7 +42,6 @@ function escrivir_palabras(){
         document.getElementById(`${I + 10}`).innerHTML = palabras_2[I + 10];
     }
 
-    console.log(palabras_2)
 }
 
 function input(){
@@ -55,20 +55,25 @@ function input(){
         errores(x);
 
         cantidad_de_palabras += 1;
+        cantidad_de_palabras_2 += 1;
 
         if (cantidad_de_palabras == 20){
             escrivir_palabras()
+            cantidad_de_palabras = 0;
         }
-        if (cantidad_de_palabras > 20){
-            cantidad_de_palabras = 1;
+        if (cantidad_de_palabras_2 == 21){
 
             Keystrokes = 0;
             Correct_words = 0;
             Wrong_words = 0;
             numero_errores_palabla = 0;
+            cantidad_de_palabras_2 = 1;
+
+            document.getElementById("speed_number").innerHTML = "0 wpm";
         }
 
         console.log(cantidad_de_palabras);
+        console.log(cantidad_de_palabras_2);
 
         x = " ";
         document.getElementById("myInput").value = "";
@@ -130,27 +135,21 @@ function comparar_listas(lista_1,lista_2){
 }
 
 function tiempo(){
-    //index = Wrong_words + Correct_words;
 
-    if (cantidad_de_palabras == 1){
+    if (cantidad_de_palabras_2 == 1){
 
         let today_1 = new Date();
 
         time_1 = parseInt(`${today_1.getHours()}${today_1.getMinutes()}${today_1.getSeconds()}`);
 
-        console.log(time_1);
     }
-    if (cantidad_de_palabras == 20){
+    if (cantidad_de_palabras_2 == 20){
 
         let today_2 = new Date();
 
         time_2 = parseInt(`${today_2.getHours()}${today_2.getMinutes()}${today_2.getSeconds()}`);
 
         time_3 = time_2 - time_1;
-
-        console.log(time_2);
-        console.log(time_3);
-
 
         let wpm = (20/time_3)*60
 
