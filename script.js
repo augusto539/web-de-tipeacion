@@ -71,10 +71,6 @@ function input(){
 
             document.getElementById("speed_number").innerHTML = "0 wpm";
         }
-
-        console.log(cantidad_de_palabras);
-        console.log(cantidad_de_palabras_2);
-
         x = " ";
         document.getElementById("myInput").value = "";
     }
@@ -88,50 +84,28 @@ function input(){
 
 function errores(x){
 
+    let errores_palabla = numero_errores_palabla;
 
-    if (string_palabras.includes(x)){
-        Correct_words += 1;
 
-        document.getElementById(`${cantidad_de_palabras}`).style.color = "#4CAF50";
+    for (let o = 0; o < (x.length)-1; o++) {
+
+
+        if  (palabras_2[cantidad_de_palabras].charAt(o) != x.charAt(o)){
+            numero_errores_palabla += 1;
+        }
     }
-    else{
-        Wrong_words += 1;
 
+    document.getElementById("errors_number").innerHTML = numero_errores_palabla;
+
+    if (errores_palabla != numero_errores_palabla){
+        Wrong_words += 1;
         document.getElementById(`${cantidad_de_palabras}`).style.color = "#c90301";
     }
-
-    if (Wrong_words != 0){
-        if (Wrong_words == 1){
-
-            palabra_3 = palabras_2[Correct_words];
-
-            comparar_listas(palabra_3,x);
-    
-        }
-        else{
-            index = (Wrong_words + Correct_words) - 1; 
-
-            palabra_3 = palabras_2[index];
-
-            comparar_listas(palabra_3,x);
-        }
+    else{
+        Correct_words += 1;
+        document.getElementById(`${cantidad_de_palabras}`).style.color = "#4CAF50";
     }
-}
 
-function comparar_listas(lista_1,lista_2){
-    for (let i = 0; i < lista_1.length; i++) {
-        if (lista_1[i-1] != lista_2[i-1]){
-
-            console.log(lista_1);
-            console.log(lista_1[i-1]);
-
-            console.log(lista_2);
-            console.log(lista_2[i-1]);
-
-            numero_errores_palabla += 1;
-        } 
-    }
-    document.getElementById("errors_number").innerHTML = numero_errores_palabla;
 }
 
 function tiempo(){
