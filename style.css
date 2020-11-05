@@ -216,16 +216,16 @@ a:hover{
 
     body{
         display: grid;
-        grid-template-rows: 84% 12%;
-        height: 98%;
+        grid-template-rows: 88% 12%;
+        height: 100%;
     }
 
     body div{
-        grid-row: 2;
+        grid-row: 1;
     }
     
     body .Google_AdSense_down{
-        grid-row: 3;
+        grid-row: 2;
     }
 
     .Stats .Customable_Stats_1{
