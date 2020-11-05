@@ -223,13 +223,15 @@ a:hover{
     .content > .Example_Text{
         grid-column: 1;
         grid-row: 1;
+
+        margin-top: 15%;
     
         display: block;
         align-self: center;
         text-align: center;
     
         color: #A7A7A7;
-        font-size: 200%;
+        font-size: 185%;
     
         display: grid;
         grid-template-rows: repeat(2, 1fr);
