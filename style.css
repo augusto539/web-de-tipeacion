@@ -331,3 +331,22 @@ a:hover{
         grid-row: 6;
     }
 }
+
+
+@media screen and (max-height: 500px) {
+
+    .content > .Input_Text{
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .Input_Text input{
+        height: 20%;
+    }
+    
+
+    .Stats{
+        display: none;
+    }
+
+}
