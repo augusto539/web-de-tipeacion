@@ -37,9 +37,8 @@ function escrivir_palabras(){
 
     palabras_2 = string_palabras.split(' ');
 
-    for (let I = 0; I < 10; I++) {
+    for (let I = 0; I < 20; I++) {
         document.getElementById(`${I}`).innerHTML = palabras_2[I];
-        document.getElementById(`${I + 10}`).innerHTML = palabras_2[I + 10];
     }
 
 }
