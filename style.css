@@ -221,8 +221,6 @@ a:hover{
     .content > .Example_Text{
         grid-column: 1;
         grid-row: 1;
-
-        margin-top: 5%;
     
         display: block;
         align-self: center;
