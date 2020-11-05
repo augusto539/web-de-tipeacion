@@ -46,11 +46,11 @@ function escrivir_palabras(){
 
 function input(){
     
-    let x = document.getElementById("myInput").value;
+    let x = " "+document.getElementById("myInput").value;
 
     Keystrokes += 1;
     
-    if (x.includes(' ')){
+    if (x.charAt(x.length-1) == " "){
 
         errores(x);
 
@@ -89,6 +89,11 @@ function errores(x){
 
     for (let o = 0; o < (x.length)-1; o++) {
 
+        console.log(x.charAt(0))
+
+        if (x.charAt(0) == " "){
+            continue
+        }
 
         if  (palabras_2[cantidad_de_palabras].charAt(o) != x.charAt(o)){
             numero_errores_palabla += 1;
@@ -129,7 +134,4 @@ function tiempo(){
 
         document.getElementById("speed_number").innerHTML = wpm.toFixed(2) + " wpm";
     }
-
-
 }
-
