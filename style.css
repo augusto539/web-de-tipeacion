@@ -189,9 +189,7 @@ a:hover{
 }
 .Customable_Stats_2 .Correct_words_number{
     grid-column: 2;
-    grid-row: 1;
-
-    
+    grid-row: 1;    
 }
 
 .Customable_Stats_2 .Wrong_words{
@@ -212,3 +210,86 @@ a:hover{
     grid-row: 3;
 }
 
+
+
+@media screen and (max-width: 479px) {
+
+    body{
+        display: grid;
+        grid-template-rows: 4% 82% 10%;
+        height: 100%;
+    }
+
+    body .space{
+        grid-row: 1;
+    }
+
+    body div{
+        grid-row: 2;
+    }
+    
+    body .Google_AdSense_down{
+        grid-row: 3;
+    }
+
+    .Stats .Customable_Stats_1{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+    .Customable_Stats_1 .speed,.speed_number,.errors,.errors_number{
+        text-align: center;
+    }
+    .Customable_Stats_1 .speed{
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .Customable_Stats_1 .speed_number{
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .Customable_Stats_1 .errors{
+        grid-column: 1;
+        grid-row: 3;
+    }
+    .Customable_Stats_1 .errors_number{
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+
+    .Stats .Customable_Stats_2{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: 23.333333333333333333333333333333% 10% 23.333333333333333333333333333333% 10% 23.333333333333333333333333333333% 10%;
+    }
+    .Customable_Stats_2 .Correct_words,.Wrong_words,.Keystrokes{
+        text-align: center;
+    }
+    .Customable_Stats_2 .Correct_words{
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .Customable_Stats_2 .Correct_words_number{
+        grid-column: 1;
+        grid-row: 2;    
+    }
+    
+    .Customable_Stats_2 .Wrong_words{
+        grid-column: 1;
+        grid-row: 3;
+    }
+    .Customable_Stats_2 .Wrong_words_number{
+        grid-column: 1;
+        grid-row: 4;
+    }
+    
+    .Customable_Stats_2 .Keystrokes{
+        grid-column: 1;
+        grid-row: 5;
+    }
+    .Customable_Stats_2 .Keystrokes_numbers{
+        grid-column: 1;
+        grid-row: 6;
+    }
+}
