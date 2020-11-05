@@ -72,7 +72,7 @@ function input(){
             document.getElementById("speed_number").innerHTML = "0 wpm";
         }
         x = " ";
-        document.getElementById("myInput").value = " ";
+        document.getElementById("myInput").value = ".";
     }
 
     tiempo();
