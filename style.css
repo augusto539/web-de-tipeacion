@@ -216,12 +216,8 @@ a:hover{
 
     body{
         display: grid;
-        grid-template-rows: 4% 82% 10%;
-        height: 100%;
-    }
-
-    body .space{
-        grid-row: 1;
+        grid-template-rows: 84% 12%;
+        height: 98%;
     }
 
     body div{
