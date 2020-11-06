@@ -1,6 +1,9 @@
 
-let palabras = ['hola', 'como', 'estas', 'yo','bien','y', 'vos','bien','tanbien','gracias','por','preguntar'];
-
+let palabras = ['de','la','que','el','en','los','se','del','un','por','con','no','ver','claro','veces','aquella','misma','programa','nueva','palabras','cual','internacional','fueron','van','una','mujer','esas','igual','tener','persona','dinero',
+                'embargo','iba','partido','personas','orden','grupo','cuenta','buena','pueden','quiere','tienen','frente','puesto','empresa','su','tras','para','cosas','es','fin','propia','al','ciudad','lo','libro','como','social','tema','guerra',
+                'manera','pero','sistema','sus','ellas','le','historia','total','ha','muchos','creo','me','Juan','tengo','Español','si','sin','cuatro','sobre','dentro','este','nuestro','condiciones','ya','punto','entre','dice','fuerza','cuando',
+                'hombre','solo','todo','cualquier','esta','noche','ser','amor','son','agua','dos','perece','puerta','haber','pesar','fue','zona','fuera','sabe','era','bajo','calle','muy','grandes','interior','años','nuestra','tampoco','hasta',
+                'ejemplo','desde','acuerdo','vista','mi','usted','campo','porque','estados','buen','hizo','hubiera','nadie','saber','han','obras','yo','horas','hay','posible','ex','vez','tarde','niños','puede','ley','presencia','todos','importante',];
 let Keystrokes = 0;
 let Correct_words = 0;
 let Wrong_words = 0;
@@ -87,8 +90,6 @@ function errores(x){
 
 
     for (let o = 1; o < (x.length)-1; o++) {
-
-        console.log(palabras_2[cantidad_de_palabras].charAt(o-1)+" "+x.charAt(o));
 
         if  (palabras_2[cantidad_de_palabras].charAt(o-1) != x.charAt(o)){
             numero_errores_palabla += 1;
