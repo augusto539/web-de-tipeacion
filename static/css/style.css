@@ -31,6 +31,9 @@ body div{
     grid-column: 1;
     grid-row: 1;
 
+    height: 100%;
+    margin-top: 10%;
+
     display: block;
     align-self: center;
     text-align: center;
@@ -39,13 +42,11 @@ body div{
     font-size: 250%;
 
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 20% 60% 20%;
 }
-.Example_Text .Example_Text_1{
-    grid-row: 1;
-}
-.Example_Text .Example_Text_2{
-    grid-row: 2;
+
+.Example_Text div{
+    grid-column: 2;
 }
 
 .content > .Input_Text{
@@ -189,9 +190,7 @@ a:hover{
 }
 .Customable_Stats_2 .Correct_words_number{
     grid-column: 2;
-    grid-row: 1;
-
-    
+    grid-row: 1;    
 }
 
 .Customable_Stats_2 .Wrong_words{
@@ -212,3 +211,192 @@ a:hover{
     grid-row: 3;
 }
 
+
+
+@media screen and (max-width: 479px) {
+
+    .content{
+        height: 100%;
+        display: grid;
+        grid-template-rows: 45% 10% 45%;
+    }
+
+    .content > .Example_Text{
+        grid-column: 1;
+        grid-row: 1;
+    
+        display: block;
+        align-self: center;
+        text-align: center;
+    
+        color: #A7A7A7;
+        font-size: 180%;
+    
+        display: grid;
+        grid-template-columns: 5% 90% 5%;
+    }
+
+    .content > .Input_Text{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+    }
+  
+    .Input_Text input{
+
+        grid-row: 1;
+        grid-column: 1;
+    
+        height: 60%;
+        width: 100%;
+    
+        border-radius: 15px;
+        border: none;
+        outline: none;
+    
+        background-color: #2D2D2D;
+        color: #A7A7A7;
+    
+        font-size: 150%;
+        text-align: center;
+    }
+
+    .Stats{
+
+        font-size: 70%;
+        display: grid;
+        grid-template-columns: 1% repeat(3, 1fr) 1%;
+        grid-template-rows: 1% repeat(1, 1fr) 10%;
+        grid-gap: 5%;
+    }
+
+    .Stats .Customable_Stats_1{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+    .Customable_Stats_1 .speed,.speed_number,.errors,.errors_number{
+        text-align: center;
+    }
+    .Customable_Stats_1 .speed{
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .Customable_Stats_1 .speed_number{
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .Customable_Stats_1 .errors{
+        grid-column: 1;
+        grid-row: 3;
+    }
+    .Customable_Stats_1 .errors_number{
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+
+    .Stats .Customable_Stats_2{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: 23.333333333333333333333333333333% 10% 23.333333333333333333333333333333% 10% 23.333333333333333333333333333333% 10%;
+    }
+    .Customable_Stats_2 .Correct_words,.Wrong_words,.Keystrokes{
+        text-align: center;
+    }
+    .Customable_Stats_2 .Correct_words{
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .Customable_Stats_2 .Correct_words_number{
+        grid-column: 1;
+        grid-row: 2;    
+    }
+    
+    .Customable_Stats_2 .Wrong_words{
+        grid-column: 1;
+        grid-row: 3;
+    }
+    .Customable_Stats_2 .Wrong_words_number{
+        grid-column: 1;
+        grid-row: 4;
+    }
+    
+    .Customable_Stats_2 .Keystrokes{
+        grid-column: 1;
+        grid-row: 5;
+    }
+    .Customable_Stats_2 .Keystrokes_numbers{
+        grid-column: 1;
+        grid-row: 6;
+    }
+}
+
+
+@media screen and (max-height: 500px) {
+
+    .content{
+        height: 100%;
+        display: grid;
+        grid-template-rows: 70% 10% 20%;
+    }
+
+    .content > .Input_Text{
+        grid-column: 1;
+        grid-row: 2;
+        height: 100%;
+    }
+
+    .Input_Text input{
+        height: 100%;
+    }
+
+    .Stats{
+        margin-top: 3%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-gap: 0;
+    }
+
+    .Stats .menu{
+        display: none;
+    }
+    .Stats .Customable_Stats_2{
+        display: none;
+    }
+    a{
+        display: none;
+    }
+
+
+    .Stats .Customable_Stats_1{
+        grid-row: 1;
+        grid-column: 1;
+
+        display: grid;
+        grid-template-columns: 1% repeat(4, 1fr) 1%;
+        grid-template-rows: 1fr;
+    }
+
+    .Customable_Stats_1 .speed{
+        grid-column: 2;
+        grid-row: 1;
+        text-align: center;
+    }
+    .Customable_Stats_1 .speed_number{
+        grid-column: 3;
+        grid-row: 1;
+    }
+    
+    .Customable_Stats_1 .errors{
+        grid-column: 4;
+        grid-row: 1;
+        text-align: end;
+    }
+    .Customable_Stats_1 .errors_number{
+        grid-column: 5;
+        grid-row: 1;
+    }
+}
