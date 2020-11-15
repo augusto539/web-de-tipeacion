@@ -3,7 +3,7 @@
 {% from "_macro.html" import render_field %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/singIn.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -19,15 +19,13 @@
                 {{ render_field(form.pasword)}}
                 <!-- <input type="password" id="password" autocomplete="off"> -->
             </div>
-            <div class="logIn">
-                <button type="submit"> logIn </button>
+            <div class="E-mail">
+                <h3> E-mail: </h3>
+                {{ render_field(form.e_mail)}}
+            </div>
+            <div class="singIn">
+                <button> singIn </button>
             </div>
         </form>
-        <div class="login_whith_google">
-            <button> logIn whith google</button>
-        </div>
-        <div class="singIn">
-            <a href="/singIn">singIn</a>
-        </div>
     </div>
 {% endblock %}
