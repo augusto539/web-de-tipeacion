@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% from "_macro.html" import render_field %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="principal_content">
+        <form action="" method='POST'>
+            <div class="user">
+                <h3> User: </h3>
+                {{ render_field(form.username)}}
+                <!-- <input type="text1" id="user" autocomplete="off"> -->
+            </div>
+            <div class="password">
+                <h3> password: </h3>
+                {{ render_field(form.pasword)}}
+                <!-- <input type="password" id="password" autocomplete="off"> -->
+            </div>
+            <div class="logIn">
+                <button type="submit"> logIn </button>
+            </div>
+        </form>
+        <div class="login_whith_google">
+            <button> logIn whith google</button>
+        </div>
+        <div class="singIn">
+            <button> singIn </button>
+        </div>
+    </div>
+{% endblock %}
