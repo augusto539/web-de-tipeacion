@@ -8,9 +8,13 @@ def inex():
 
 @app.route('/LogIn')
 def LogIn():
-   return render_template('LogIn.html', title='LogIn')
+   return render_template('LogIn.html', title='- LogIn')
 
-@app.route('/Profile', title='Profile')
+@app.route('/SignUp')
+def SignUp():
+   return render_template('SignUp.html', title='- SignUp')
+
+@app.route('/Profile')
 def Profile():
    pass
 

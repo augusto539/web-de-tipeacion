@@ -1,82 +1,69 @@
+{% extends "layout.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" type="image/png" href="static\img\icon.png" sizes="32x32">
+{% block content %}
 
-        <link rel="stylesheet" href="static/css/Style.css">
-
-        <script src="static/js/script.js"></script>
-
-        <title>Web de tipeacion</title>
-
-    </head>
-    <body>
-        <div class="Google_AdSense_down"></div>
-        <div>
-            <div class="content">
-                <div class="Example_Text">
-                    <div>
-                        <span id="0"></span>
-                        <span id="1"></span>
-                        <span id="2"></span>
-                        <span id="3"></span>
-                        <span id="4"></span>
-                        <span id="5"></span>
-                        <span id="6"></span>
-                        <span id="7"></span>
-                        <span id="8"></span>
-                        <span id="9"></span>
-                        <span id="10"></span>
-                        <span id="11"></span>
-                        <span id="12"></span>
-                        <span id="13"></span>
-                        <span id="14"></span>
-                        <span id="15"></span>
-                        <span id="16"></span>
-                        <span id="17"></span>
-                        <span id="18"></span>
-                        <span id="19"></span>
-                    </div>
-                </div>
-                <div class="Input_Text">
-                    <input type="text1" name="text_1" id="myInput" autocomplete="off" autocapitalize="off" oninput="input()"> 
-                </div>
+<div class="Google_AdSense_down"></div>
+    <div>
+        <div class="content">
+            <div class="Example_Text">
                 <div>
-                    <div class="Stats">
-                        <div class="Menu">
-                            <a href="/LogIn" class="menu_item_1"> Log in </a>
-                            <a href="" class="menu_item_2"> Options </a>
-                            <a href="" class="menu_item_3"> Stats </a>
-                        </div>
-                        <div class="Customable_Stats_1">
-                            <h2 class="speed"> Speed: </h2>
-                            <h2 class="speed_number" id="speed_number">0 wpm</h2>
+                    <span id="0"></span>
+                    <span id="1"></span>
+                    <span id="2"></span>
+                    <span id="3"></span>
+                    <span id="4"></span>
+                    <span id="5"></span>
+                    <span id="6"></span>
+                    <span id="7"></span>
+                    <span id="8"></span>
+                    <span id="9"></span>
+                    <span id="10"></span>
+                    <span id="11"></span>
+                    <span id="12"></span>
+                    <span id="13"></span>
+                    <span id="14"></span>
+                    <span id="15"></span>
+                    <span id="16"></span>
+                    <span id="17"></span>
+                    <span id="18"></span>
+                    <span id="19"></span>
+                </div>
+            </div>
+            <div class="Input_Text">
+                <input type="text1" name="text_1" id="myInput" autocomplete="off" autocapitalize="off" oninput="input()"> 
+            </div>
+            <div>
+                <div class="Stats">
+                    <div class="Menu">
+                        <a href="/LogIn" class="menu_item_1"> Log in </a>
+                        <a href="" class="menu_item_2"> Options </a>
+                        <a href="" class="menu_item_3"> Stats </a>
+                    </div>
+                    <div class="Customable_Stats_1">
+                        <h2 class="speed"> Speed: </h2>
+                        <h2 class="speed_number" id="speed_number">0 wpm</h2>
 
-                            <h2 class="errors"> Errors: </h2>
-                            <h2 class="errors_number" id="errors_number">0</h2>
-                        </div>
-                        <div class="Customable_Stats_2">
-                            <h2 class="Correct_words"> Correct words: </h2>
-                            <h2 class="Correct_words_number" id="Correct_words_number">0</h2>
+                        <h2 class="errors"> Errors: </h2>
+                        <h2 class="errors_number" id="errors_number">0</h2>
+                    </div>
+                    <div class="Customable_Stats_2">
+                        <h2 class="Correct_words"> Correct words: </h2>
+                        <h2 class="Correct_words_number" id="Correct_words_number">0</h2>
 
-                            <h2 class="Wrong_words"> Wrong words: </h2>
-                            <h2 class="Wrong_words_number" id="Wrong_words_number">0</h2>
+                        <h2 class="Wrong_words"> Wrong words: </h2>
+                        <h2 class="Wrong_words_number" id="Wrong_words_number">0</h2>
 
-                            <h2 class="Keystrokes"> Keystrokes: </h2>
-                            <h2 class="Keystrokes_numbers" id="Keystrokes_numbers">0</h2>
-                        </div>
+                        <h2 class="Keystrokes"> Keystrokes: </h2>
+                        <h2 class="Keystrokes_numbers" id="Keystrokes_numbers">0</h2>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script> 
-            escrivir_palabras();
-        </script>
+    <script> 
+        escrivir_palabras();
+    </script>
 
-    </body>
-</html>
+{% endblock %}
