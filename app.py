@@ -1,18 +1,26 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, flash, redirect
+from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = '2a27b8563e40cf05fbd76cbc7f8bd4f6'
+
 @app.route('/')
-def inex():
+def index():
    return render_template('index.html')
+
+@app.route('/SignUp', methods=['GET','POST'])
+def SignUp():
+   form = RegistrationForm()
+   if form.validate_on_submit():
+      flash(f'Accout createed for {form.username.data}!','success')
+      return redirect(url_for('index'))
+   return render_template('SignUp.html', title='- SignUp', form=form)
 
 @app.route('/LogIn')
 def LogIn():
-   return render_template('LogIn.html', title='- LogIn')
-
-@app.route('/SignUp')
-def SignUp():
-   return render_template('SignUp.html', title='- SignUp')
+   form = LoginForm()
+   return render_template('LogIn.html', title='- LogIn', form=form)
 
 @app.route('/Profile')
 def Profile():

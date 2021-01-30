@@ -2,6 +2,37 @@
 
 {% block content %}
 
-    <h1> this going to be the SignUp </h1>
+    <div>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend> start tracking your progres today </legend>
+                <div class="username">
+                    {{ form.username.label }}
+                    {{ form.username }}
+                </div>
+                <div class="email">
+                    {{ form.email.label }}
+                    {{ form.email }}
+                </div>
+                <div class="password">
+                    {{ form.password.label }}
+                    {{ form.password }}
+                </div>
+                <div class="confirm_password">
+                    {{ form.comfirm_password.label }}
+                    {{ form.comfirm_password }}
+                </div>
+            </fieldset>
+            <div class="submit">
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
+    <div>
+        <small>
+            Alredy have an account? <a href="{{ url_for ('LogIn') }}"> Sign In </a>
+        </small>
+    </div>
 
 {% endblock %}

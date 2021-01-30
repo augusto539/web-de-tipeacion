@@ -13,6 +13,18 @@
     <title>Web de tipeacion {{title}}</title>
 </head>
 <body>
+    
+    {% with masseges = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith%}
+
+    
     {% block content %}
     {% endblock %}
 </body>
