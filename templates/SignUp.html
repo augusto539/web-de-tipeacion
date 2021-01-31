@@ -2,37 +2,74 @@
 
 {% block content %}
 
-    <div>
-        <form method="POST" action="">
-            {{ form.hidden_tag() }}
-            <fieldset>
-                <legend> start tracking your progres today </legend>
+    <div class="signup">
+        <div class="main_card">
+            <div class="person">
+                <div class="circle">
+                    <div class="head"></div>
+                    <div class="body"></div>
+                </div>
+            </div>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
                 <div class="username">
-                    {{ form.username.label }}
-                    {{ form.username }}
+                    {% if form.username.errors %}
+                        {{ form.username (class="is_invalid") }} 
+                        <div class="invalid_fedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username }} 
+                    {% endif %}
                 </div>
                 <div class="email">
-                    {{ form.email.label }}
-                    {{ form.email }}
+                    {% if form.email.errors %}
+                        {{ form.email (class="is_invalid") }} 
+                        <div class="invalid_fedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email }}
+                    {% endif %}
                 </div>
                 <div class="password">
-                    {{ form.password.label }}
-                    {{ form.password }}
+                    {% if form.password.errors %}
+                        {{ form.password (class="is_invalid") }} 
+                        <div class="invalid_fedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password }}
+                    {% endif %}
                 </div>
                 <div class="confirm_password">
-                    {{ form.comfirm_password.label }}
-                    {{ form.comfirm_password }}
+                    {% if form.comfirm_password.errors %}
+                        {{ form.comfirm_password (class="is_invalid") }} 
+                        <div class="invalid_fedback">
+                            {% for error in form.comfirm_password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.comfirm_password }}
+                    {% endif %}
                 </div>
-            </fieldset>
-            <div class="submit">
-                {{ form.submit }}
+                <div class="submit">
+                    {{ form.submit (class="input_submit") }}
+                </div>
+            </form>
+            <div class="small">
+                <small>
+                    Alredy have an account? <a href="{{ url_for ('LogIn') }}"> Sign In </a>
+                </small>
             </div>
-        </form>
-    </div>
-    <div>
-        <small>
-            Alredy have an account? <a href="{{ url_for ('LogIn') }}"> Sign In </a>
-        </small>
+        </div>
     </div>
 
 {% endblock %}

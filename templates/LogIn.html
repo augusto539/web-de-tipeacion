@@ -2,6 +2,40 @@
 
 {% block content %}
 
-    <h1> this going to be the logIn </h1>
+    <div class="login">
+        <div class="main_card">
+            <div class="person">
+                <div class="circle">
+                    <div class="head"></div>
+                    <div class="body"></div>
+                </div>
+            </div>
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <div class="email">
+
+                    {{ form.email }}
+                </div>
+                <div class="password">
+                    {{ form.password }}
+                </div>
+                <div class="boolean">
+                    {{ form.remember }}
+                    {{ form.remember.label }}
+                </div>
+                <div class="submit">
+                    {{ form.submit (class="input_submit") }}
+                </div>
+            </form>
+            <div class="small">
+                <small class="forgot_password">
+                    <a href="">Forgot Password?</a>
+                </small>
+                <small>
+                    You don't have an account? <a href="{{ url_for ('SignUp') }}"> SignUp </a>
+                </small>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
