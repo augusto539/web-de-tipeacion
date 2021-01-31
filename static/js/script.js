@@ -35,7 +35,7 @@ function escrivir_palabras(){
 
         string_palabras += (palabras[Numero_1] + ' ');
 
-        document.getElementById(i).style.color = "#A7A7A7";
+        document.getElementById(i).style.color = "white";
     }
 
     palabras_2 = string_palabras.split(' ');
