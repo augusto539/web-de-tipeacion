@@ -33,5 +33,10 @@ def Profile():
    pass
 
 
+@app.route('/pruebas')
+def pruebas():
+   return render_template('prueba.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=4000)
