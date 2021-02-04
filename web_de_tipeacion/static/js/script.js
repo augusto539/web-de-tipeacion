@@ -8,10 +8,10 @@ let DataBase = ['de','la','que','el','en','los','se','del','un','por','con','no'
 let string_DataBase = "";
 let word_number = 0;
 let words_set_strig = "";
+let words_set_strig_without_spaces = "";
 let words_set_list = [];
 let word_to_Write = "";
 let span = "";
-
 
 // input
 let Keystrokes = 0;
@@ -37,8 +37,9 @@ function Write_Words(){
         word_number = Math.round(Math.random() * ((DataBase.length - 1 ) - 0 ) + 0 );
 
         words_set_strig += (DataBase[word_number] + " ");
+        words_set_strig_without_spaces += (DataBase[word_number])
 
-        document.getElementById(i).style.color = "white";
+        document.getElementById("word_"+i).style.color = "white";
     }
 
     words_set_list = words_set_strig.split(' ');
@@ -48,9 +49,9 @@ function Write_Words(){
         span = "";
 
         for (let a = 0; a < word_to_Write.length; a++) {
-            span += `<sapn>${word_to_Write[a]}</sapn>` 
+            span += `<sapn id="${e}.${a}">${word_to_Write[a]}</sapn>` 
         }
-        document.getElementById(e).innerHTML = span;
+        document.getElementById("word_"+e).innerHTML = span;
     }    
 }
 
@@ -60,6 +61,8 @@ function Write_Words(){
 function input(){
     
     let input_value = document.getElementById("main_input").value;
+
+    console.log(input_value);
 
     Keystrokes += 1;
     
@@ -113,11 +116,11 @@ function errors(input_value){
 
     if (errors_for_words_1 != errors_for_words_2){
         Wrong_words += 1;
-        document.getElementById(`${number_of_words}`).style.color = "#c90301";
+        document.getElementById(`word_${number_of_words}`).style.color = "#c90301";
     }
     else{
         Correct_words += 1;
-        document.getElementById(`${number_of_words}`).style.color = "#4CAF50";
+        document.getElementById(`word_${number_of_words}`).style.color = "#4CAF50";
     }
 
 }
