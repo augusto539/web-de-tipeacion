@@ -53,8 +53,6 @@ input{
     margin-top: 1%;
     color: #c3062c;
 }
-
-
 .alert-success{
     text-align: center;
     color: #5dc724;
@@ -140,16 +138,6 @@ a:hover{
     border-width: 1px;
     border-color: rgba(255, 255, 255, 0);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -253,11 +241,65 @@ a:hover{
 
 
 
-
-
 .signup{
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 10% 80% 10%;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .home{
+        grid-template-rows: 60% 20% 20%;
+    }
+
+
+    .Input_Text{
+        padding: 0;
+    }
+    .Input_Text input{
+        width: 80%;
+    }
+
+    .lower_section{
+        grid-column-gap: 5%;
+        margin-top: 10%;
+        padding-bottom: 15%;
+
+        background-color: rgba(128, 128, 128, 0.123);
+    }
+
+    .menu{
+        display: none;
+    }
+
+    .central_stats{
+        grid-column: 3 / 5;
+        text-align: center;
+
+        display: grid;
+        grid-template-columns: 2;
+        grid-template-rows: 2;
+    }
+
+    .sped, .errors{
+        grid-row: 2;
+    }
+    .speed_number, .errors_number{
+        grid-row: 1;
+        padding-top: 13%;
+    }
+    .sped, .speed_number{
+        grid-column: 1;
+    }
+    .errors, .errors_number{
+        grid-column: 2
+    }
+
+    .right_stats{
+        display: none;
+    }
 }
