@@ -1,124 +1,140 @@
-
-let palabras = ['de','la','que','el','en','los','se','del','un','por','con','no','ver','claro','veces','aquella','misma','programa','nueva','palabras','cual','internacional','fueron','van','una','mujer','esas','igual','tener','persona','dinero',
+// write_words
+let DataBase = ['de','la','que','el','en','los','se','del','un','por','con','no','ver','claro','veces','aquella','misma','programa','nueva','palabras','cual','internacional','fueron','van','una','mujer','esas','igual','tener','persona','dinero',
                 'embargo','iba','partido','personas','orden','grupo','cuenta','buena','pueden','quiere','tienen','frente','puesto','empresa','su','tras','para','cosas','es','fin','propia','al','ciudad','lo','libro','como','social','tema','guerra',
                 'manera','pero','sistema','sus','ellas','le','historia','total','ha','muchos','creo','me','Juan','tengo','Español','si','sin','cuatro','sobre','dentro','este','nuestro','condiciones','ya','punto','entre','dice','fuerza','cuando',
                 'hombre','solo','todo','cualquier','esta','noche','ser','amor','son','agua','dos','perece','puerta','haber','pesar','fue','zona','fuera','sabe','era','bajo','calle','muy','grandes','interior','años','nuestra','tampoco','hasta',
                 'ejemplo','desde','acuerdo','vista','mi','usted','campo','porque','estados','buen','hizo','hubiera','nadie','saber','han','obras','yo','horas','hay','posible','ex','vez','tarde','niños','puede','ley','presencia','todos','importante',];
+
+let string_DataBase = "";
+let word_number = 0;
+let words_set_strig = "";
+let words_set_strig_without_spaces = "";
+let words_set_list = [];
+let word_to_Write = "";
+let span = "";
+
+// input
 let Keystrokes = 0;
 let Correct_words = 0;
 let Wrong_words = 0;
-let numero_errores_palabla = 0;
 
-let palabras_2 = "";
-let palabras_3 = "";
-let cantidad_de_palabras = 0;
-let cantidad_de_palabras_2 = 0;
-let index;
+let input_value = "";
+let number_of_words = 0;
+let number_of_words_2 = 0;
 
-let string_palabras = "";
-let x_dividida = "";
 
-let time_1;
-let time_2;
-let time_3;
+// errors
+let errors_for_words_1 = 0;
+let errors_for_words_2 = 0;
 
-function escrivir_palabras(){
 
-    string_palabras = "";
+function Write_Words(){
 
-    document.getElementById("errors_number").innerHTML = numero_errores_palabla;
+    words_set_strig = "";
 
     for (let i = 0; i < 20; i++) {
 
-        let Numero_1 = Math.round(Math.random() * ((palabras.length - 1) - 0) + 0);
+        word_number = Math.round(Math.random() * ((DataBase.length - 1 ) - 0 ) + 0 );
 
+        words_set_strig += (DataBase[word_number] + " ");
+        words_set_strig_without_spaces += (DataBase[word_number])
 
-        string_palabras += (palabras[Numero_1] + ' ');
-
-        document.getElementById(`${i}`).style.color = "#A7A7A7";
+        document.getElementById("word_"+i).style.color = "white";
     }
 
-    palabras_2 = string_palabras.split(' ');
+    words_set_list = words_set_strig.split(' ');
 
-    for (let I = 0; I < 20; I++) {
-        document.getElementById(`${I}`).innerHTML = palabras_2[I];
-    }
+    for (let e = 0; e < 20; e++) {
+        word_to_Write = words_set_list[e];
+        span = "";
 
+        for (let a = 0; a < word_to_Write.length; a++) {
+            span += `<sapn id="${e}.${a}">${word_to_Write[a]}</sapn>` 
+        }
+        document.getElementById("word_"+e).innerHTML = span;
+    }    
 }
+
+
+
 
 function input(){
     
-    let x = document.getElementById("myInput").value;
+    let input_value = document.getElementById("main_input").value;
+
+    console.log(input_value);
 
     Keystrokes += 1;
     
-    if (x.charAt(x.length-1) == " "){
+    if (input_value.charAt(input_value.length-1) == " "){
 
-        errores(x);
+        errors(input_value);
 
-        cantidad_de_palabras += 1;
-        cantidad_de_palabras_2 += 1;
+        number_of_words += 1;
+        number_of_words_2 += 1;
 
-        if (cantidad_de_palabras == 20){
-            escrivir_palabras()
-            cantidad_de_palabras = 0;
+        if (number_of_words == 20){
+            Write_Words(); 
+            number_of_words = 0;
         }
-        if (cantidad_de_palabras_2 == 21){
+        if (number_of_words_2 == 21){
 
             Keystrokes = 0;
             Correct_words = 0;
             Wrong_words = 0;
-            numero_errores_palabla = 0;
-            cantidad_de_palabras_2 = 1;
+            errors_for_words_2 = 0;
+            number_of_words_2 = 1;
 
             document.getElementById("speed_number").innerHTML = "0 wpm";
         }
-        x = " ";
-        document.getElementById("myInput").value = "";
+        input_value = " ";
+        document.getElementById("main_input").value = "";
     }
 
-    tiempo();
+    time();
     
     document.getElementById("Correct_words_number").innerHTML = Correct_words;
     document.getElementById("Wrong_words_number").innerHTML = Wrong_words;
     document.getElementById("Keystrokes_numbers").innerHTML = Keystrokes;
-    }
-
-function errores(x){
-
-    let errores_palabla = numero_errores_palabla;
+}
 
 
-    for (let o = 1; o < (x.length)-1; o++) {
 
-        if  (palabras_2[cantidad_de_palabras].charAt(o-1) != x.charAt(o)){
-            numero_errores_palabla += 1;
+
+function errors(input_value){
+
+    let errors_for_words_1 = errors_for_words_2;
+
+    for (let o = 1; o < (input_value.length)-1; o++) {
+
+        if  (words_set_list[number_of_words].charAt(o) != input_value.charAt(o)){
+            errors_for_words_2 += 1;
         }
     }
 
-    document.getElementById("errors_number").innerHTML = numero_errores_palabla;
+    document.getElementById("errors_number").innerHTML = errors_for_words_2;
 
-    if (errores_palabla != numero_errores_palabla){
+    if (errors_for_words_1 != errors_for_words_2){
         Wrong_words += 1;
-        document.getElementById(`${cantidad_de_palabras}`).style.color = "#c90301";
+        document.getElementById(`word_${number_of_words}`).style.color = "#c90301";
     }
     else{
         Correct_words += 1;
-        document.getElementById(`${cantidad_de_palabras}`).style.color = "#4CAF50";
+        document.getElementById(`word_${number_of_words}`).style.color = "#4CAF50";
     }
 
 }
 
-function tiempo(){
+function time(){
 
-    if (cantidad_de_palabras_2 == 1){
+    if (number_of_words_2 == 1){
 
         let today_1 = new Date();
 
         time_1 = parseInt(`${today_1.getHours()}${today_1.getMinutes()}${today_1.getSeconds()}`);
 
     }
-    if (cantidad_de_palabras_2 == 20){
+    if (number_of_words_2 == 20){
 
         let today_2 = new Date();
 
