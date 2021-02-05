@@ -1,12 +1,15 @@
 from flask import render_template, url_for, flash, redirect
 from web_de_tipeacion import app
 from web_de_tipeacion.forms import RegistrationForm, LoginForm
-from web_de_tipeacion.models import User, Statistics
+from web_de_tipeacion.models import User, Statistics, Words
+
+from web_de_tipeacion.web_driver import fill_database
 
 
 @app.route('/')
 def index():
-   return render_template('index.html')
+   words = Words.query.filter_by(lenguage='English').all()
+   return render_template('index.html', words=words)
 
 
 @app.route('/SignUp', methods=['GET','POST'])
@@ -37,6 +40,8 @@ def Profile():
 
 @app.route('/pruebas')
 def pruebas():
-   return render_template('prueba.html')
+
+   fill_database(Words)
+   return '<h1> this is the pruebas route </h1>'
 
 

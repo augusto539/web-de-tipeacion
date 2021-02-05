@@ -3,6 +3,18 @@
 
 {% block content %}
 
+    <script>
+        let kk = []
+    </script>
+    {% for _word_ in words %}
+        <script>
+            kk.push('{{ _word_.word }}')
+        </script>
+    {% endfor %}
+    <script>
+        console.log(kk)
+    </script>
+
     <div class="home">
         <div class="Example_Text">
             <span id="word_0"></span>
