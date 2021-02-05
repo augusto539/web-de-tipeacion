@@ -7,17 +7,13 @@
 html{
     
     height: 100%;
-    background: rgba(20,25,107,1);
-    background: -moz-linear-gradient(45deg, rgba(20,25,107,1) 0%, rgba(102,16,183,1) 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(20,25,107,1)), color-stop(100%, rgba(102,16,183,1)));
-    background: -webkit-linear-gradient(45deg, rgba(20,25,107,1) 0%, rgba(102,16,183,1) 100%);
-    background: -o-linear-gradient(45deg, rgba(20,25,107,1) 0%, rgba(102,16,183,1) 100%);
-    background: -ms-linear-gradient(45deg, rgba(20,25,107,1) 0%, rgba(102,16,183,1) 100%);
-    background: linear-gradient(45deg, rgba(20,25,107,1) 0%, rgba(102,16,183,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14196b', endColorstr='#6610b7', GradientType=1 );
-
-
-
+   
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2431a5+0,b719aa+100 */
+    background: rgb(36,49,165); /* Old browsers */
+    background: -moz-linear-gradient(45deg,  rgba(36,49,165,1) 0%, rgba(183,25,170,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg,  rgba(36,49,165,1) 0%,rgba(183,25,170,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg,  rgba(36,49,165,1) 0%,rgba(183,25,170,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2431a5', endColorstr='#b719aa',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
     color: white;
 
@@ -53,8 +49,6 @@ input{
     margin-top: 1%;
     color: #c3062c;
 }
-
-
 .alert-success{
     text-align: center;
     color: #5dc724;
@@ -141,15 +135,9 @@ a:hover{
     border-color: rgba(255, 255, 255, 0);
 }
 
-
-
-
-
-
-
-
-
-
+.options_icon{
+    display: none;
+}
 
 
 
@@ -253,11 +241,90 @@ a:hover{
 
 
 
-
-
 .signup{
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 10% 80% 10%;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .home{
+        grid-template-rows: 60% 20% 20%;
+    }
+
+
+    .Input_Text{
+        padding: 0;
+    }
+    .Input_Text input{
+        width: 80%;
+    }
+
+    .lower_section{
+        grid-column-gap: 5%;
+        margin-top: 10%;
+        padding-bottom: 15%;
+
+        background-color: rgba(128, 128, 128, 0.123);
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+    }
+
+    .menu a .options_icon{
+        margin-top: 30%;
+        margin-left: 20%;
+    }
+
+    .menu .options_icon{
+        display: -webkit-box;
+        height: 80%;
+        width: 80%;
+    }
+
+    .menu .menu_item_1, .menu .menu_item_2, .menu .menu_item_3{
+        display: none;
+    }
+
+    .central_stats{
+        grid-column: 3 / 5;
+        text-align: center;
+
+        display: grid;
+        grid-template-columns: 2;
+        grid-template-rows: 2;
+    }
+
+    .sped, .errors{
+        grid-row: 2;
+    }
+    .speed_number, .errors_number{
+        grid-row: 1;
+        padding-top: 13%;
+    }
+    .sped, .speed_number{
+        grid-column: 1;
+    }
+    .errors, .errors_number{
+        grid-column: 2
+    }
+
+    .right_stats{
+        display: none;
+    }
+}
+
+
+@media only screen and (max-height: 500px){
+    .Example_Text{
+        font-size: 2rem;
+    }
+
+    .lower_section{
+        margin-top: 0;
+        padding-bottom: 20%;
+    }
 }
