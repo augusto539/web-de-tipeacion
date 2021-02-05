@@ -1,4 +1,5 @@
 from web_de_tipeacion import db
+from web_driver import fill_database
 
 
 class User(db.Model):
@@ -24,4 +25,4 @@ class Words(db.Model):
     word_length = db.Column(db.Integer, nullable=False)
     lenguage = db.Column(db.String(5), nullable=False)
 
-
+fill_database(db, Words)
