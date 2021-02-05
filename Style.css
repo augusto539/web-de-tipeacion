@@ -135,6 +135,10 @@ a:hover{
     border-color: rgba(255, 255, 255, 0);
 }
 
+.options_icon{
+    display: none;
+}
+
 
 
 
@@ -266,9 +270,22 @@ a:hover{
         padding-bottom: 15%;
 
         background-color: rgba(128, 128, 128, 0.123);
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
     }
 
-    .menu{
+    .menu a .options_icon{
+        margin-top: 30%;
+        margin-left: 20%;
+    }
+
+    .menu .options_icon{
+        display: -webkit-box;
+        height: 80%;
+        width: 80%;
+    }
+
+    .menu .menu_item_1, .menu .menu_item_2, .menu .menu_item_3{
         display: none;
     }
 
