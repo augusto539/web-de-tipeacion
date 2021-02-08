@@ -2,17 +2,9 @@
 
 
 {% block content %}
-
     <script>
-        let kk = []
-    </script>
-    {% for _word_ in words %}
-        <script>
-            kk.push('{{ _word_.word }}')
-        </script>
-    {% endfor %}
-    <script>
-        console.log(kk)
+        var data = JSON.parse('{{ _words_|safe }}');
+        let tp = new TP(data);
     </script>
 
     <div class="home">
@@ -40,7 +32,7 @@
         </div>
 
         <div class="Input_Text">
-            <input type="text1" name='test_1' id='main_input' autocomplete="off" autocapitalize="off" oninput="input()" autofocus>
+            <input type="text1" name='test_1' id='main_input' autocomplete="off" autocapitalize="off" oninput="tp.Input()" autofocus>
         </div>
 
         <div class="lower_section">
@@ -74,7 +66,7 @@
     </div>
 
     <script>
-        Write_Words();
+        tp.Write_Words();
     </script>
 
 {% endblock %}

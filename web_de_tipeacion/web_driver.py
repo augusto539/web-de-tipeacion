@@ -29,7 +29,7 @@ def fill_database(Words):
         word_number=0
 
         #1002
-        while i < 4:
+        while i < 1002:
             word_lenght = 0
 
             if lenguage == "English":
