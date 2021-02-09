@@ -16,6 +16,7 @@ class TP{
         this.errors = 0;
         this.Wrong_words = 0;
         this.Keystrokes = 0;
+        this.wpm = 0;
     };
 
 
@@ -68,16 +69,18 @@ class TP{
             document.getElementById("main_input").value = "";
 
             if (this.word_count == 20){
-                this.Write_Words();
-                this.word_count = 0;
-                this.input_word_length_2 = 0;
+                //this.Write_Words();
+                //this.word_count = 0;
+                //this.input_word_length_2 = 0;
 
-                this.Correct_words = 0;
-                this.errors = 0;
-                this.Wrong_words = 0;
-                this.Keystrokes = 0;
+                //this.Correct_words = 0;
+                //this.errors = 0;
+                //this.Wrong_words = 0;
+                //this.Keystrokes = 0;
 
                 this.time('End')
+
+                this.save_data();
             };
         }else{
             this.errors_letter(input_value)
@@ -123,9 +126,14 @@ class TP{
             let end = new Date().getTime();
             let time = end - this.start;
 
-            let wpm = (60000 * 20) / time;
+            this.wpm = (60000 * 20) / time;
 
-            document.getElementById("speed_number").innerHTML = wpm.toFixed(2);
+            document.getElementById("speed_number").innerHTML = this.wpm.toFixed(2);
         };
+    };
+
+    save_data(){
+        window.location.replace(`/home`); 
+        //console.log(`/home/${this.Correct_words}/${this.Wrong_words}/${this.wpm.toFixed(2)}/${this.Keystrokes}/${this.errors}`);
     };
 };

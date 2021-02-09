@@ -12,7 +12,7 @@ _Words_ = []
 def index():
    words = Words.query.filter_by(lenguage='English').all()
    for word in words:
-      words_dictionari = {'id':word.id, 'word': word.word, 'word_length': word.word_length}
+      words_dictionari = {'word': word.word}
       _Words_.append(words_dictionari)
       
    return redirect(url_for('home'))
