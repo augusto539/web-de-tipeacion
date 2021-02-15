@@ -20,8 +20,8 @@ class User(db.Model, UserMixin):
 class Statistics(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     speed = db.Column(db.Float, nullable=False)
-    errors = db.Column(db.Float, nullable=False)
-    time = db.Column(db.DateTime, nullable=False)
+    errors = db.Column(db.Integer, nullable=False)
+    time = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 

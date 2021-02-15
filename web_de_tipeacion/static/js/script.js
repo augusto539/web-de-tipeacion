@@ -17,6 +17,7 @@ class TP{
         this.Wrong_words = 0;
         this.Keystrokes = 0;
         this.wpm = 0;
+        this.total_time = 0;
     };
 
 
@@ -78,7 +79,7 @@ class TP{
                 //this.Wrong_words = 0;
                 //this.Keystrokes = 0;
 
-                this.time('End')
+                this.Time('End')
 
                 this.save_data();
             };
@@ -88,7 +89,7 @@ class TP{
             this.input_word_length += 1;
             this.input_word_length_2 +=1;
 
-            this.time('Start')
+            this.Time('Start')
         };
     };
 
@@ -117,23 +118,35 @@ class TP{
         };
     };
 
-    time(start_end){
+    Time(start_end){
         if (start_end == 'Start'){
             if (this.input_word_length_2 == 1){
                 this.start = new Date().getTime();
             };
         }else{
             let end = new Date().getTime();
-            let time = end - this.start;
+            this.total_time = end - this.start;
 
-            this.wpm = (60000 * 20) / time;
+            this.wpm = (60000 * 20) / this.total_time;
 
             document.getElementById("speed_number").innerHTML = this.wpm.toFixed(2);
         };
     };
 
     save_data(){
-        window.location.replace(`/home`); 
-        //console.log(`/home/${this.Correct_words}/${this.Wrong_words}/${this.wpm.toFixed(2)}/${this.Keystrokes}/${this.errors}`);
+        
+        let dictionary_to_send={"Correct_words": this.Correct_words,
+                                "Wrong_words": this.Wrong_words,
+                                'time': this.total_time,
+                                'wpm': this.wpm.toFixed(2),
+                                'Keystrokes': this.Keystrokes,
+                                "errors": this.errors};
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", '/home', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(dictionary_to_send));
+
+        window.location.replace(`/home`);
     };
 };
