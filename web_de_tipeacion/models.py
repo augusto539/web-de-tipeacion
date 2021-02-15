@@ -22,12 +22,14 @@ class Statistics(db.Model):
     speed = db.Column(db.Float, nullable=False)
     errors = db.Column(db.Integer, nullable=False)
     time = db.Column(db.Integer, nullable=False)
+    Correct_words = db.Column(db.Integer, nullable=False)
+    Wrong_words = db.Column(db.Integer, nullable=False)
+    Keystrokes = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 class Words(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     word = db.Column(db.String, unique=True, nullable=False)
-    word_length = db.Column(db.Integer, nullable=False)
     lenguage = db.Column(db.String(), nullable=False)
 

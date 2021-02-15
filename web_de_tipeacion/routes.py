@@ -23,9 +23,16 @@ def index():
 @app.route('/home', methods=['GET','POST'])
 def home():
    if request.method == 'POST':
+
       info = json.loads(request.data)
 
-      #stats = Statistics(speed=float(info['wpm']), errors=int(info['errors']), time=int(info['time']))
+      _stats_ = Statistics(speed = float(info['wpm']), errors = int(info['errors']),time = int(info['time']),Correct_words = int(info['Correct_words']),Wrong_words = int(info['Wrong_words']), Keystrokes = int(info['Keystrokes']), user = current_user)
+
+      db.session.add(_stats_)
+      db.session.commit()
+      
+      stats2 = Statistics.query.filter_by( user_id = current_user.id ).all() 
+      print(stats2)
 
    return render_template('index.html', _words_=json.dumps(_Words_))
 
@@ -51,8 +58,8 @@ def SignUp():
 
 @app.route('/LogIn', methods=['GET','POST'])
 def LogIn():
-   if current_user.is_authenticated:
-      return redirect(url_for('home'))
+   #if current_user.is_authenticated:
+    #  return redirect(url_for('home'))
    form = LoginForm()
    if form.validate_on_submit():
       user = User.query.filter_by(email=form.email.data).first()

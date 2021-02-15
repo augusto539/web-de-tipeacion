@@ -135,12 +135,13 @@ class TP{
 
     save_data(){
         
-        let dictionary_to_send={"Correct_words": this.Correct_words,
-                                "Wrong_words": this.Wrong_words,
+        let dictionary_to_send={'wpm': this.wpm.toFixed(2),
+                                "errors": this.errors,
                                 'time': this.total_time,
-                                'wpm': this.wpm.toFixed(2),
-                                'Keystrokes': this.Keystrokes,
-                                "errors": this.errors};
+                                "Correct_words": this.Correct_words,
+                                "Wrong_words": this.Wrong_words,
+                                'Keystrokes': this.Keystrokes
+                                };
 
         let xhr = new XMLHttpRequest();
         xhr.open("POST", '/home', true);
