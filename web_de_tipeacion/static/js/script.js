@@ -44,9 +44,6 @@ class TP{
     };
 
 
-    
-
-
     Input(){
         let input_value = document.getElementById("main_input").value;
 

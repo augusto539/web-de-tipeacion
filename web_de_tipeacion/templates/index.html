@@ -46,21 +46,21 @@
 
             <div class="central_stats">
                 <h2 class="speed"> Speed: </h2>
-                <h2 class="speed_number" id='speed_number'> 0 wpm </h2>
+                <h2 class="speed_number" id='speed_number'> {{ last_stats.speed }} wpm </h2>
 
                 <h2 class="erros"> Errors: </h2>
-                <h2 class="errors_number" id="errors_number"> 0 </h2>
+                <h2 class="errors_number" id="errors_number"> {{ last_stats.errors }} </h2>
             </div>
 
             <div class="right_stats">
                 <h2 class="Correct_words"> Correct words: </h2>
-                <h2 class="Correct_words_number" id="Correct_words_number">0</h2>
+                <h2 class="Correct_words_number" id="Correct_words_number"> {{ last_stats.Correct_words }} </h2>
 
                 <h2 class="Wrong_words"> Wrong words: </h2>
-                <h2 class="Wrong_words_number" id="Wrong_words_number">0</h2>
+                <h2 class="Wrong_words_number" id="Wrong_words_number"> {{ last_stats.Wrong_words }} </h2>
 
                 <h2 class="Keystrokes"> Keystrokes: </h2>
-                <h2 class="Keystrokes_numbers" id="Keystrokes_numbers">0</h2>
+                <h2 class="Keystrokes_numbers" id="Keystrokes_numbers"> {{ last_stats.Keystrokes }} </h2>
             </div>
         </div>
     </div>

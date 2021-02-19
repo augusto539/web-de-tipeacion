@@ -30,11 +30,14 @@ def home():
 
       db.session.add(_stats_)
       db.session.commit()
-      
-      stats2 = Statistics.query.filter_by( user_id = current_user.id ).all() 
-      print(stats2)
 
-   return render_template('index.html', _words_=json.dumps(_Words_))
+   if current_user.is_authenticated:
+      last_stats = Statistics.query.filter_by( user_id = current_user.id ).all()
+      last_stats = last_stats[-1]
+   else:
+      last_stats = {'speed': 0, 'errors': 0, 'time': 0, 'Correct_words': 0, 'Wrong_words': 0, 'Keystrokes': 0}
+
+   return render_template('index.html', _words_=json.dumps(_Words_), last_stats=last_stats)
 
 
 @app.route('/SignUp', methods=['GET','POST'])
@@ -58,8 +61,8 @@ def SignUp():
 
 @app.route('/LogIn', methods=['GET','POST'])
 def LogIn():
-   #if current_user.is_authenticated:
-    #  return redirect(url_for('home'))
+   if current_user.is_authenticated:
+      return redirect(url_for('home'))
    form = LoginForm()
    if form.validate_on_submit():
       user = User.query.filter_by(email=form.email.data).first()
@@ -81,7 +84,32 @@ def LogOut():
 
 @app.route('/Profile')
 def Profile():
-   pass
+   username = current_user.username
+   stats = Statistics.query.filter_by( user_id = current_user.id ).all()
+
+   speeds=[]
+   errors=[]
+   times=0
+
+   for individual_stat in stats:
+      speeds.append(individual_stat.speed)
+      errors.append(individual_stat.errors)
+      
+      times += individual_stat.time
+
+   seconds=(times/1000)%60
+   seconds = int(seconds)
+   minutes=(times/(1000*60))%60
+   minutes = int(minutes)
+   hours=(times/(1000*60*60))%24
+
+   total_time = "%d:%d:%d" % (hours, minutes, seconds)
+
+   average_errors = round(sum(errors) / len(errors), 2)
+   average_speeds = round(sum(speeds) / len(speeds), 2)
+   max_speed = max(speeds)
+
+   return render_template('Profile.html', title = f'- {username}',average_speeds=average_speeds,max_speed=max_speed,total_time=total_time,average_errors=average_errors)
 
 
 @app.route('/data_base')

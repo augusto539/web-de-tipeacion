@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="profile">
+        <div class="top_section">
+            <div class="user_img"></div>
+            <div class="username"></div>
+        </div>
+        <div class="mid_section">
+            <h1> Today </h1>
+            <div class="today">
+                <div class="best_wpm">
+
+                </div>
+                <div class="average_wpm">
+
+                </div>
+                <div class="Total_time"></div>
+                <div class="average_errors"></div>
+            </div>
+            <h1> All time </h1>
+            <div class="all_time">
+                <div class="best_wpm">
+                    <h3> Top Speed (wpm): </h3>
+                    <h2> {{ max_speed }} </h2>
+                </div>
+                <div class="average_wpm">
+                    <h3> Average Speed (wpm) </h3>
+                    <h2> {{ average_speeds }} </h2>
+                </div>
+                <div class="Total_time">
+                    <h3> Total time </h3>
+                    <h2> {{ total_time }} </h2>
+                </div>
+                <div class="average_errors">
+                    <h3> Average Errors </h3>
+                    <h2> {{ average_errors }} </h2>
+                </div>
+            </div>
+        </div>
+        <div class="lower_section">
+            <div class="typing_speed"></div>
+        </div>
+    </div>
+{% endblock %}
