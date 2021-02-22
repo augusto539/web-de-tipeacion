@@ -1,5 +1,6 @@
 from web_de_tipeacion import db, Login_manager
 from flask_login import UserMixin
+from datetime import datetime
 
 
 @Login_manager.user_loader
@@ -25,6 +26,7 @@ class Statistics(db.Model):
     Correct_words = db.Column(db.Integer, nullable=False)
     Wrong_words = db.Column(db.Integer, nullable=False)
     Keystrokes = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.String, nullable=False, default=datetime.today().strftime("%d/%m/%Y"))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 

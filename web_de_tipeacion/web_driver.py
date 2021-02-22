@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from web_de_tipeacion import db
 
 def fill_database(Words):
 

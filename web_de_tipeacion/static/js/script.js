@@ -67,14 +67,6 @@ class TP{
             document.getElementById("main_input").value = "";
 
             if (this.word_count == 20){
-                //this.Write_Words();
-                //this.word_count = 0;
-                //this.input_word_length_2 = 0;
-
-                //this.Correct_words = 0;
-                //this.errors = 0;
-                //this.Wrong_words = 0;
-                //this.Keystrokes = 0;
 
                 this.Time('End')
 
@@ -86,7 +78,7 @@ class TP{
             this.input_word_length += 1;
             this.input_word_length_2 +=1;
 
-            this.Time('Start')
+            this.Time('Start');
         };
     };
 
