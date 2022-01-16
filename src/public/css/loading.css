@@ -1,0 +1,13 @@
+.loading_screen{
+    height: 100%;
+    padding-top: 18%;
+}
+
+.spinner-border{
+    width: 10rem;
+    height: 10rem;
+}
+.loading{   
+    text-align: center;
+    margin-top: 2%;
+}

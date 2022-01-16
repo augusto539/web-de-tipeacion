@@ -2,6 +2,8 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 let words = []
+let word = ''
+let divided_word = []
 let column = 2
 
 
@@ -30,12 +32,11 @@ async function get_words(language){
         
         $(elemSelector).each((parentIdx,parentElm) => {
             $(parentElm).children().each((childrenIdx,childrenElm) => {
-                if (childrenIdx == column){
-                    words.push($(childrenElm).text())
+                if (childrenIdx == column){  
+                    words.push($(childrenElm).text());              
                 }
             })              
         });
-
         return words
     } catch (error) {
         console.log(error)

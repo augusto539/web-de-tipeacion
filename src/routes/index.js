@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
         
     });
     */
-    res.render('index.html');
+    res.render('index.html',{title:'- Loading'});
 });
 
 router.get('/home/:language', (req, res) => {
@@ -32,19 +32,33 @@ router.get('/home/:language', (req, res) => {
         all_words = value
         const numbers = w.get_numbers();
         numbers.forEach(element => {
-            words.push(all_words[element])
+            if (all_words[element].includes(' ')){
+                random_number = Math.floor(Math.random() * (1001 - 0)) + 0;
+                words.push(all_words[random_number]);
+            } else {
+                words.push(all_words[element]);
+            }
         });
         
-        res.render('home.html',{title:'',text:words});
+        res.render('home.html',{title:'', language:req.params.language, text:words, speed:'00', top_speed:'00', errors:'00', wrong_words:'00'});
     });
 });
-router.get('/home',(req, res) => {
+router.get('/home/:language/:speed',(req, res) => {
     words = [];
     const numbers = w.get_numbers();
     numbers.forEach(element => {
-        words.push(all_words[element])
+        try{
+            if (all_words[element].includes(' ')){
+                random_number = Math.floor(Math.random() * (1001 - 0)) + 0;
+                words.push(all_words[random_number]);
+            } else {
+                words.push(all_words[element]);
+            }
+        } catch(err){
+            res.redirect('/');
+        }  
     });
-    res.render('home.html',{title:'',text:words});
+    res.render('home.html',{title:'', language:req.params.language, text:words, speed:req.params.speed, top_speed:'00', errors:'00', wrong_words:'00'});
 })
 
 

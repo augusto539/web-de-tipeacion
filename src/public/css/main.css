@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    margin: 0;
+    background-color: rgb(19, 19, 19);
+    
+}
+
+html{
+    
+    height: 100%;
+    font-family: Noto Sans, sans-serif;
+}
+
+body{
+    height: 100%;
+    color: #A7A7A7;
+}
+
+
+
+
+

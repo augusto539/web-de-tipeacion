@@ -1,27 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('partials/head.html') %>
+    <!-- JAVASCRIPT -->
     <script src="/js/input.js"></script>
+    <script src="/js/utilities.js"></script>
+
+    <%- include('partials/head.html') %>
+    <link rel="stylesheet" href="/css/home.css">
 </head>
-<body>
+<body onload="line()">
     <div class="home">
         <div class="Example_Text">
-            <p>
-                <% text.forEach(word => { %> 
-                    <%- word %>
-                <% }); %>
-            </p>
+                <% for (let i = 0; i < text.length; i++) { %>
+                    <span id='<%- i %>'>
+                        <%- text[i] %>
+                    </span>
+                <% }; %>
         </div>
         <div class="Input_Text">
             <div class="contaier">
-                <input type="text" id="main_input" autocomplete="off" autocapitalize="off" oninput="input()" autofocus>    
+                <input type="text" id="main_input" autocomplete="off" autocapitalize="off" oninput="input('<%- language %>','<%- text %>')" autofocus>
+                <div class="line_close" id="line_container"><div class="neutral_line" id="line"></div></div> 
             </div>
         </div>
-        <div class="lower_section"></div>
+        <div class="lower_section">
+            <div class="menu">
+                <button type="button" class="btn btn-dark btn-lg">Login</button>
+                <button type="button" class="btn btn-dark btn-lg">Options</button>
+                <button type="button" class="btn btn-dark btn-lg">Singin</button>
+            </div>
+            <div class="central_stats">
+                <h4> Speed: <%- speed %> wpm</h4>
+                <h4> Top seed: <%- top_speed %> wpm</h4>
+            </div>
+            <div class="right_stats">
+                <h4> Errors: <%- errors %> </h4>
+                <h4> Wrong words: <%- wrong_words %> </h4>
+            </div>
+        </div>
     </div>
 </body>
 <footer>
+    <script>
+        function line(){document.getElementById("line_container").className = "line_open";};
+    </script>
     <%- include('partials/footer.html') %>
 </footer>
 </html>

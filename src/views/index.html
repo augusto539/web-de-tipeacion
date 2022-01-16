@@ -1,9 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.html') %>
+    <link rel="stylesheet" href="/css/loading.css">
+</head>
+<body>
+    <div class="loading_screen">
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-light" role="status"></div>
+        </div>
+        <h3 class="loading"> Loading... </h3>
+    </div>
+</body>
+<footer>
+    <%- include('partials/footer.html') %>
+</footer>
 <script type="text/javascript">
     let language = '';
     let userLang = navigator.language || navigator.userLanguage; 
     if (userLang == 'es'){
         language = 'spanish';
+    } else {
+        language = 'english'
     }
     location.href='/home/' + language;
-    //alert ("The language is: " + userLang);
 </script>
+</html>
