@@ -1,0 +1,9 @@
+<script type="text/javascript">
+    let language = '';
+    let userLang = navigator.language || navigator.userLanguage; 
+    if (userLang == 'es'){
+        language = 'spanish';
+    }
+    location.href='/home/' + language;
+    //alert ("The language is: " + userLang);
+</script>

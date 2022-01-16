@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.html') %>
+    <script src="/js/input.js"></script>
+</head>
+<body>
+    <div class="home">
+        <div class="Example_Text">
+            <p>
+                <% text.forEach(word => { %> 
+                    <%- word %>
+                <% }); %>
+            </p>
+        </div>
+        <div class="Input_Text">
+            <div class="contaier">
+                <input type="text" id="main_input" autocomplete="off" autocapitalize="off" oninput="input()" autofocus>    
+            </div>
+        </div>
+        <div class="lower_section"></div>
+    </div>
+</body>
+<footer>
+    <%- include('partials/footer.html') %>
+</footer>
+</html>
