@@ -1,13 +1,14 @@
+// INPORTS
 const axios = require('axios');
 const cheerio = require('cheerio');
 
+// VARIABLES
+// get_words
 let words = []
-let word = ''
-let divided_word = []
 let column = 2
 
 
-function get_numbers(){
+function get_numbers(){         // makes a set of 20 random numbers between 0 and 1000
     let numbers = [];
     for (let i = 0; i < 20; i++) {
         random_number = Math.floor(Math.random() * (1001 - 0)) + 0;
@@ -16,7 +17,7 @@ function get_numbers(){
     return numbers
 }
 
-async function get_words(language){
+async function get_words(language){     // uses the set of numbers to select 20 words
     words = [];
     if (language == 'english'){
         column = 2

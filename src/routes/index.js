@@ -1,5 +1,7 @@
 const express = require('express');
 const w = require('../public/js/words.js')
+const controllers = require('../controllers/authController')
+
 
 
 const router = express.Router();
@@ -12,16 +14,6 @@ let words = [];
 
 // gets
 router.get('/', (req, res) => {
-    /*
-    w.get_words(lenguage).then((value) => {
-        all_words = value
-        const numbers = w.get_numbers();
-        numbers.forEach(element => {
-            words.push(all_words[element])
-        });
-        
-    });
-    */
     res.render('index.html',{title:'- Loading'});
 });
 
@@ -59,7 +51,21 @@ router.get('/home/:language/:speed',(req, res) => {
         }  
     });
     res.render('home.html',{title:'', language:req.params.language, text:words, speed:req.params.speed, top_speed:'00', errors:'00', wrong_words:'00'});
-})
+});
+
+// signUp
+router.get('/SignUp', (req, res) => {
+    res.render('SignUp.html',{title:' - SignUp'})
+});
+// logIn
+router.get('/LogIn', (req, res) => {
+    res.render('logIn.html',{title:' - LogIn'})
+});
+
+
+
+// POSTS
+router.post('/SignUp', controllers.register);
 
 
 

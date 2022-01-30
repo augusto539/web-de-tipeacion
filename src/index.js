@@ -1,20 +1,28 @@
 const express = require('express');
+const dotenv = require('dotenv')
+const cookieParser = require('cookie-parser')
 const path = require('path');
 const bodyParser = require('body-parser')
+const os = require('os')
 
 
 const app = express();
 
 // SETINGS
-app.set('port', 3000);
-app.set('hostname', '192.168.1.36');
+app.set('port', process.env.PORT || 3000);
+app.set('hostname', os.networkInterfaces()['Ethernet 2'][1]['address']); //get the ipv4 of the sistem
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'ejs');
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+// cookies
+//app.use(cookieParser);
+// variables de entorno
+dotenv.config({path: 'src/env/.env'});
+
 
 
 // ROUTES

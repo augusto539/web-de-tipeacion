@@ -12,7 +12,6 @@ function input(language,words_set){
     Words = words_set.split(","); 
     input_value = document.getElementById("main_input").value; // input_value is what the user tipes
 
-    //console.log(input_value);
     last_inputed_value = input_value.charAt(input_value.length-1); // last caracter in the word
     
     if (input_value.length >= 1) {
@@ -20,9 +19,6 @@ function input(language,words_set){
             color(current_word,Words,number_of_words)
             number_of_words += 1
             speed = time(number_of_words)
-
-            //console.log(speed)
-            //console.log(number_of_words)
 
             if (number_of_words == 20){
                 location.href=`/home/${language}/${speed}`;
