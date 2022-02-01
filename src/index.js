@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 // cookies
-//app.use(cookieParser);
+app.use(cookieParser());
 // variables de entorno
 dotenv.config({path: 'src/env/.env'});
 

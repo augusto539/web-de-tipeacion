@@ -26,8 +26,21 @@
         <div class="lower_section">
             <div class="menu">
                 <button type="button" class="btn btn-dark btn-lg">Options</button>
-                <button type="button" class="btn btn-dark btn-lg">Log In</button>
-                <button type="button" class="btn btn-dark btn-lg">Singn Up</button>
+                <% if (user == 'guest'){ %>
+                    <a href="/LogIn">
+                        <button type="button" class="btn btn-dark btn-lg">Log In</button>
+                    </a>
+                    <a href="/SignUp">
+                        <button type="button" class="btn btn-dark btn-lg">Singn Up</button>
+                    </a> 
+                <% } else { %>
+                    <a href="">
+                        <button type="button" class="btn btn-dark btn-lg">Stats</button>
+                    </a>
+                    <a href="/LogOut">
+                        <button type="button" class="btn btn-dark btn-lg">Log out</button>
+                    </a> 
+                <% }; %>
             </div>
             <div class="central_stats stats">
                 <h4> Speed: <%- speed %> wpm</h4>
