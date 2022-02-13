@@ -34,9 +34,12 @@ async function get_words(language){     // uses the set of numbers to select 20 
         $(elemSelector).each((parentIdx,parentElm) => {
             $(parentElm).children().each((childrenIdx,childrenElm) => {
                 if (childrenIdx == column){  
-                    words.push($(childrenElm).text());              
-                }
-            })              
+                    let word = $(childrenElm).text()
+                    if (word.length > 1 && !word.includes(' ') && word != undefined) {
+                        words.push(word);  
+                    };           
+                };
+            });             
         });
         return words
     } catch (error) {

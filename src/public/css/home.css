@@ -35,6 +35,18 @@ input{
     padding-right: 10%;
     padding-top: 5%;
 }
+.space{
+    color: rgb(19, 19, 19);
+}
+.Example_Text br {
+    font-size: 2.5rem;
+}
+.Example_Text span{
+    font-size: 0;    
+}
+.Example_Text span span{
+    font-size: 2.5rem;
+}
 
 .Input_Text{
     grid-row: 2;

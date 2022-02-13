@@ -4,7 +4,8 @@
   "description": "this a webpage for practice typing",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src"
+    "dev": "nodemon src",
+    "start": "node src"
   },
   "author": "Augusto Antonelli",
   "license": "ISC",

@@ -3,7 +3,13 @@ const bcryptjs = require('bcryptjs');
 const db = require('../database/db');
 const {promisify} = require('util');
 
-const w = require('../public/js/words.js')
+const w = require('../public/js/words.js');
+const e = require('../public/js/encryption.js');
+
+
+//const lenguage = 'english';
+let all_words = [];
+let words = [];
 
 
 
@@ -72,25 +78,6 @@ exports.login = async (req, res) => {
     };
 };
 
-//autenticacion
-exports.isAuthenticated_1 = async (req, res, next) => {
-    if (req.cookies.jwt) {
-        try {
-            const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
-            db.query('SELECT * FROM users WHERE id = ?', [decoded.id],(error, results) => {
-                if (!results) {return next()};
-                req.user = results[0];
-                return next();
-            });
-        } catch (error) {
-            console.log(error)
-            return next()
-        };
-    } else {
-        res.redirect('/LogIn');
-    };
-};
-
 exports.home_new_words = async (req, res) => {
     if (req.cookies.jwt) {
         try {
@@ -136,39 +123,74 @@ exports.logout = (req, res) => {
 
 
 
+
+
+
+
+
+// auxiliar funccions
 function homeWords (req,res,user) {
     words = [];
     all_words = [];
     w.get_words(req.params.language).then((value) => {
-        all_words = value
+        all_words = value;
+
+        let words = []
+
+        for (let index = 0; index < 10; index++) {
+
+            for (let i = (index * 100 ); i < ( (index + 1) * 100); i++) {
+                words.push(all_words[i])   
+            }
+            res.cookie(('words_' + index), words);
+            words = [];  
+        };
+        
         const numbers = w.get_numbers();
         numbers.forEach(element => {
-            if (all_words[element].includes(' ')){
-                random_number = Math.floor(Math.random() * (1001 - 0)) + 0;
-                words.push(all_words[random_number]);
-            } else {
-                words.push(all_words[element]);
-            }
+            words = no_spaces(all_words,element)
         });
+        
+        
             
-        res.render('home.html',{title:'',user:user , language:req.params.language, text:words, speed:'00', top_speed:'00', errors:'00', wrong_words:'00'});
+        res.render('home.html',{title:'',user:user , language:req.params.language, text:words, speed:'00', top_speed:'00', errors:'00', correct_words:'00', wrong_words:'00'});
     });
 }
 
 function home (req,res,user) {
+
+    let cookie_words = [];
+    cookie_words = cookie_words.concat(req.cookies.words_0, req.cookies.words_1, req.cookies.words_2, req.cookies.words_3, req.cookies.words_4, req.cookies.words_5, req.cookies.words_6, req.cookies.words_7, req.cookies.words_8, req.cookies.words_9)
+    
     words = [];
     const numbers = w.get_numbers();
+
     numbers.forEach(element => {
         try{
-            if (all_words[element].includes(' ')){
-                random_number = Math.floor(Math.random() * (1001 - 0)) + 0;
-                words.push(all_words[random_number]);
-            } else {
-                words.push(all_words[element]);
-            }
+            words = no_spaces(cookie_words,element);
         } catch(err){
             res.redirect('/');
         }  
     });
-    res.render('home.html',{title:'',user:user, language:req.params.language, text:words, speed:req.params.speed, top_speed:'00', errors:'00', wrong_words:'00'});
+    let speed = e.decrypt('holasoyunacontrasenia',req.params.speed)
+    let correct_words = e.decrypt('holasoyunacontrasenia',req.params.correct_words)
+    let wrong_words = e.decrypt('holasoyunacontrasenia',req.params.wrong_words)
+    let errors = e.decrypt('holasoyunacontrasenia',req.params.errors)
+    res.render('home.html',{title:'',user:user, language:req.params.language, text:words, speed:speed, top_speed:'00', errors:'00', correct_words:correct_words, wrong_words:wrong_words});
+}
+
+
+
+function no_spaces(array,element){
+    if (array[element] != undefined){
+        words.push(array[element]);
+    }  else {
+        let word = array[element];
+        while (word == undefined) {
+            let random_number = Math.floor(Math.random() * (1001 - 0)) + 0;
+            word = array[random_number];
+        };
+        words.push(word); 
+    };
+    return words
 }

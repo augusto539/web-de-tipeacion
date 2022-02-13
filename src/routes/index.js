@@ -5,9 +5,7 @@ const controllers = require('../controllers/authController')
 
 const router = express.Router();
 
-//const lenguage = 'english';
-let all_words = [];
-let words = [];
+
 
  
 
@@ -18,7 +16,7 @@ router.get('/', (req, res) => {
 
 router.get('/home/:language', controllers.home_new_words);
 
-router.get('/home/:language/:speed',controllers.home);
+router.get('/home/:language/:speed/:correct_words/:wrong_words/:errors',controllers.home);
 
 // signUp
 router.get('/SignUp', (req, res) => {
@@ -39,6 +37,6 @@ router.post('/SignUp', controllers.register);
 router.post('/LogIn', controllers.login);
 
 
-
+//prueba cookie
 
 module.exports = router;

@@ -4,6 +4,7 @@
     <!-- JAVASCRIPT -->
     <script src="/js/input.js"></script>
     <script src="/js/utilities.js"></script>
+    <script src="/js/encryption.js"></script>
 
     <%- include('partials/head.html') %>
     <link rel="stylesheet" href="/css/home.css">
@@ -11,15 +12,22 @@
 <body onload="line()">
     <div class="home">
         <div class="Example_Text">
-                <% for (let i = 0; i < text.length; i++) { %>
-                    <span id='<%- i %>'>
-                        <%- text[i] %>
-                    </span>
-                <% }; %>
+            <% for (let y = 0; y < 20; y++) { %>
+                <span id="<%- y %>">
+                    <% for (let i = 1; i <= text[y].length; i++) { %>
+                        <span id='<%- y %>,<%- i %>'><%=text[y][i-1]%></span>
+                    <% }; %>
+                </span>
+                <% if (y == 9) { %>
+                    <br>
+                <% } else { %>
+                    <span class="space">|</span>
+                <% }; %>   
+            <% }; %>       
         </div>
         <div class="Input_Text">
             <div class="contaier">
-                <input type="text" id="main_input" autocomplete="off" autocapitalize="off" oninput="input('<%- language %>','<%- text %>')" autofocus>
+                <input type="text" id="main_input" autocomplete="off" autocapitalize="off" onkeydown="input('<%- language %>','<%- text %>',event)" autofocus>
                 <div class="line_close" id="line_container"><div class="neutral_line" id="line"></div></div> 
             </div>
         </div>
@@ -44,7 +52,9 @@
             </div>
             <div class="central_stats stats">
                 <h4> Speed: <%- speed %> wpm</h4>
+                <h4> Raight words: <%- correct_words %> </h4>
                 <h4> Top seed: <%- top_speed %> wpm</h4>
+                
             </div>
             <div class="right_stats stats">
                 <h4> Errors: <%- errors %> </h4>
