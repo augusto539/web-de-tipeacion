@@ -1,5 +1,5 @@
 const express = require('express');
-const controllers = require('../controllers/authController')
+//const controllers = require('../controllers/authController')
 
 const w = require('../public/js/words.js');
 const e = require('../public/js/encryption.js');
@@ -41,6 +41,7 @@ router.get('/SignUp', (req, res) => {
 router.get('/LogIn', (req, res) => {
     res.render('logIn.html',{title:' - LogIn', alert_tipe:'', mesage:''})
 });
+/*
 // LogOut
 router.get('/LogOut', controllers.logout);
 
@@ -51,7 +52,7 @@ router.post('/SignUp', controllers.register);
 
 router.post('/LogIn', controllers.login);
 
-
+*/
 function home (req,res,user) {
 
     let cookie_words = [];
@@ -102,4 +103,17 @@ function homeWords (req,res,user) {
     });
 }
 
+function no_spaces(array,element){
+    if (array[element] != undefined){
+        words.push(array[element]);
+    }  else {
+        let word = array[element];
+        while (word == undefined) {
+            let random_number = Math.floor(Math.random() * (1001 - 0)) + 0;
+            word = array[random_number];
+        };
+        words.push(word); 
+    };
+    return words
+}
 module.exports = router;
