@@ -25,6 +25,10 @@ router.get('/', (req, res) => {
 //router.get('/home/:language', controllers.home_new_words);
 //router.get('/home/:language/:speed/:correct_words/:wrong_words/:errors',controllers.home);
 
+router.get('/home/:language', (req,res) => {
+    homeWords(req,res,'guest')
+});
+
 router.get('/home/:language/:speed/:correct_words/:wrong_words/:errors', (req,res) => {
     home(req,res,'guest')
 });
