@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser')
 const path = require('path');
 const bodyParser = require('body-parser')
-const os = require('os')
+//const os = require('os')
 
 
 const app = express();
@@ -23,8 +23,6 @@ app.use(cookieParser());
 // variables de entorno
 dotenv.config({path: 'src/env/.env'});
 
-
-
 // ROUTES
 app.use(require('./routes/index'));
 
@@ -33,4 +31,4 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // LISTENING THE SERVER
 //app.listen(app.get('port'),app.get('hostname') , () => console.log(`Server runing at http://${app.get('hostname')}:${app.get('port')}/`));
-app.listen(app.get('port'),app.get('hostname') , () => console.log(`Server runing at ${app.get('port')}/`));
+app.listen(app.get('port'),app.get('hostname') , () => console.log(`Server runing on port ${app.get('port')}`));
