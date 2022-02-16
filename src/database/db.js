@@ -3,12 +3,12 @@ const mysql = require('mysql');
 
 const connection = mysql.createConnection({
     host: 'us-cdbr-east-05.cleardb.net',
-    user: 'b2a77b3794627c',
-    password: '6d1eedf4',
-    database: 'heroku_7c03fd427a95f7d'
+    user: 'bb991aa9ee14ec',
+    password: '11f993b4',
+    database: 'heroku_b0b210df1761f92'
 });
 
-
+//mysql://bb991aa9ee14ec:11f993b4@us-cdbr-east-05.cleardb.net/heroku_b0b210df1761f92?reconnect=true
 
 connection.connect(error => {
     if (error) throw error;
