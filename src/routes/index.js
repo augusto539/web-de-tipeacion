@@ -1,16 +1,6 @@
 const express = require('express');
 const controllers = require('../controllers/authController')
 
-const w = require('../public/js/words.js');
-const e = require('../public/js/encryption.js');
-
-
-//const lenguage = 'english';
-let all_words = [];
-let words = [];
-
-
-
 const router = express.Router();
 
 

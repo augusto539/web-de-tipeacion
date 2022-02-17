@@ -1,8 +1,12 @@
 const jwt = require('jsonwebtoken');
 const bcryptjs = require('bcryptjs');
+
+/*
 const db = require('../database/db');
 const {promisify} = require('util');
-
+*/
+const dbmanager = require('../database/dbmanager');
+const mysqlConn = new dbmanager();
 const w = require('../public/js/words.js');
 const e = require('../public/js/encryption.js');
 
@@ -22,6 +26,16 @@ exports.register = async (req, res) => {
         if (!req.body.email || !req.body.password) {
             res.render('SignUp.html',{title:' - SignUp', alert:"show", alert_tipe:'warning', mesage:'Plese fill all the camps'})
         } else {
+            mysqlConn.execute('SELECT * FROM users WHERE email = ?', data.email).then(results =>{
+                if (results.length != 0) {
+                    res.render('SignUp.html',{title:' - SignUp', alert:"show", alert_tipe:'danger', mesage:`The email: ${data.email} <b>already exists</b>`})
+                } else {
+                    mysqlConn.execute('INSERT INTO users SET ?', data).then(res.redirect('/'))
+                };
+            })
+        
+            
+            /*
             db.query('SELECT * FROM users WHERE email = ?', [data.email], (error, results) => {
                 if (error)  throw error;
     
@@ -34,6 +48,7 @@ exports.register = async (req, res) => {
                     });
                 };
             });
+            */
         };        
     } catch (error) {
         console.log(error);
@@ -100,11 +115,13 @@ exports.home = async (req, res) => {
     if (req.cookies.jwt) {
         try {
             const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+            /*
             db.query('SELECT * FROM users WHERE id = ?', [decoded.id],(error, results) => {
                 if (!results) {return next()};
                 req.user = results[0];
                 home(req,res,decoded.id)
             });
+            */
         } catch (error) {
             console.log(error)
             home(req,res,'guest')
@@ -137,7 +154,7 @@ function homeWords (req,res,user) {
 
         let words = []
 
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < 5; index++) {
 
             for (let i = (index * 100 ); i < ( (index + 1) * 100); i++) {
                 words.push(all_words[i])   
@@ -160,8 +177,7 @@ function homeWords (req,res,user) {
 function home (req,res,user) {
 
     let cookie_words = [];
-    cookie_words = cookie_words.concat(req.cookies.words_0, req.cookies.words_1, req.cookies.words_2, req.cookies.words_3, req.cookies.words_4, req.cookies.words_5, req.cookies.words_6, req.cookies.words_7, req.cookies.words_8, req.cookies.words_9)
-    
+    cookie_words = cookie_words.concat(req.cookies.words_0, req.cookies.words_1, req.cookies.words_2, req.cookies.words_3, req.cookies.words_4)
     words = [];
     const numbers = w.get_numbers();
 
@@ -176,7 +192,7 @@ function home (req,res,user) {
     let correct_words = e.decrypt('holasoyunacontrasenia',req.params.correct_words)
     let wrong_words = e.decrypt('holasoyunacontrasenia',req.params.wrong_words)
     let errors = e.decrypt('holasoyunacontrasenia',req.params.errors)
-    res.render('home.html',{title:'',user:user, language:req.params.language, text:words, speed:speed, top_speed:'00', errors:'00', correct_words:correct_words, wrong_words:wrong_words});
+    res.render('home.html',{title:'',user:user, language:req.params.language, text:words, speed:speed, top_speed:'00', errors:errors, correct_words:correct_words, wrong_words:wrong_words});
 }
 
 
@@ -187,7 +203,7 @@ function no_spaces(array,element){
     }  else {
         let word = array[element];
         while (word == undefined) {
-            let random_number = Math.floor(Math.random() * (1001 - 0)) + 0;
+            let random_number = Math.floor(Math.random() * (501 - 0)) + 0;
             word = array[random_number];
         };
         words.push(word); 

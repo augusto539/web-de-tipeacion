@@ -1,8 +1,9 @@
 //REQUIRES
 const express = require('express');
+const dotenv = require('dotenv')
+const cookieParser = require('cookie-parser')
 const path = require('path');
 const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 //const os = require('os')
 // VARIABLES
@@ -18,6 +19,7 @@ app.use(favicon('src/public/img/icon.png'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+dotenv.config({path: 'src/env/.env'});
 app.use(require('./routes/index'));
 app.use(express.static(path.join(__dirname, 'public')))
 // LISTENING THE SERVER

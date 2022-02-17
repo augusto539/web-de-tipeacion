@@ -11,7 +11,7 @@ let column = 2
 function get_numbers(){         // makes a set of 20 random numbers between 0 and 1000
     let numbers = [];
     for (let i = 0; i < 20; i++) {
-        random_number = Math.floor(Math.random() * (1001 - 0)) + 0;
+        random_number = Math.floor(Math.random() * (501 - 0)) + 0;
         numbers.push(random_number);  
     }
     return numbers
