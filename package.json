@@ -7,7 +7,7 @@
     "dev": "nodemon src",
     "start": "node src"
   },
-  "author": "Augusto Antonelli",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",

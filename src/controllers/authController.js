@@ -1,10 +1,8 @@
 const jwt = require('jsonwebtoken');
 const bcryptjs = require('bcryptjs');
 
-/*
-const db = require('../database/db');
 const {promisify} = require('util');
-*/
+
 const dbmanager = require('../database/dbmanager');
 const mysqlConn = new dbmanager();
 const w = require('../public/js/words.js');
@@ -30,25 +28,9 @@ exports.register = async (req, res) => {
                 if (results.length != 0) {
                     res.render('SignUp.html',{title:' - SignUp', alert:"show", alert_tipe:'danger', mesage:`The email: ${data.email} <b>already exists</b>`})
                 } else {
-                    mysqlConn.execute('INSERT INTO users SET ?', data).then(res.redirect('/'))
+                    mysqlConn.execute('INSERT INTO users SET ?', data).then(res.redirect('/LogIn'))
                 };
             })
-        
-            
-            /*
-            db.query('SELECT * FROM users WHERE email = ?', [data.email], (error, results) => {
-                if (error)  throw error;
-    
-                if (results.length != 0) {
-                    res.render('SignUp.html',{title:' - SignUp', alert:"show", alert_tipe:'danger', mesage:`The email: ${data.email} <b>already exists</b>`})
-                } else {
-                    db.query('INSERT INTO users SET ?', data, (error, results) => {
-                        if (error)  throw error;
-                        res.redirect('/');
-                    });
-                };
-            });
-            */
         };        
     } catch (error) {
         console.log(error);
@@ -63,9 +45,7 @@ exports.login = async (req, res) => {
         if (!req.body.email || !req.body.password) {
             res.render('logIn.html',{title:' - SignUp', alert:"show", alert_tipe:'warning', mesage:'Plese fill all the camps'});
         } else {
-            db.query('SELECT * FROM users WHERE email = ? ', [data.email], async (error, results) => {
-                if (error)  throw error;
-
+            mysqlConn.execute('SELECT * FROM users WHERE email = ? ', data.email).then( async (results) => {
                 if (results.length == 0) {
                     res.render('logIn.html',{title:' - SignUp', alert:"show", alert_tipe:'danger', mesage:'The email is invalid'});
                 } else {
@@ -86,7 +66,7 @@ exports.login = async (req, res) => {
                         res.redirect('/');
                     };
                 };
-            });
+            })
         };      
     } catch (error) {
         console.log(error);
@@ -97,10 +77,13 @@ exports.home_new_words = async (req, res) => {
     if (req.cookies.jwt) {
         try {
             const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
-            db.query('SELECT * FROM users WHERE id = ?', [decoded.id],(error, results) => {
-                if (!results) {return next()};
-                req.user = results[0];
-                homeWords(req,res,decoded.id)
+            mysqlConn.execute('SELECT * FROM users WHERE id = ?', decoded.id).then(results => {
+                if (!results) {
+                    homeWords(req,res,'guest')
+                } else {
+                    req.user = results[0];
+                    homeWords(req,res,decoded.id)
+                };  
             });
         } catch (error) {
             console.log(error)
@@ -115,13 +98,14 @@ exports.home = async (req, res) => {
     if (req.cookies.jwt) {
         try {
             const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
-            /*
-            db.query('SELECT * FROM users WHERE id = ?', [decoded.id],(error, results) => {
-                if (!results) {return next()};
-                req.user = results[0];
-                home(req,res,decoded.id)
+            mysqlConn.execute('SELECT * FROM users WHERE id = ?', decoded.id).then(results => {
+                if (!results) {
+                    home(req,res,'guest')
+                } else {
+                    req.user = results[0];
+                    home(req,res,decoded.id)
+                };  
             });
-            */
         } catch (error) {
             console.log(error)
             home(req,res,'guest')
